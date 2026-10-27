@@ -67,7 +67,7 @@ export const PROFILE = {
   portfolioUrl: 'https://chittivalasa124.github.io/Rakesh_portfolio.com/',
   resumePath: 'resume.pdf',
   graduationYear: '2024',
-  idNumber: 'CR-124818-ENG',
+  idNumber: 'CR-1218-ENG',
   validFrom: '2000',
   validTill: '∞',
   department: 'Frontend Engineering / AT&T',
