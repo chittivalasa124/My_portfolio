@@ -158,7 +158,10 @@ export const SKILLS: SkillElement[] = [
   { number: 39, symbol: 'Ds', name: 'DSA', family: 'Architecture & Concepts', isBrand: false, projects: ['Algorithmic Efficiency'], description: 'Data structures, algorithm complexity analysis, trees, graphs, and dynamic programming.' },
   { number: 40, symbol: 'Sd', name: 'System Design', family: 'Architecture & Concepts', isBrand: false, projects: ['Scalable Architecture'], description: 'Distributed systems, high availability, rate limiting, and fault tolerance.' },
   { number: 41, symbol: 'Op', name: 'OOP & SOLID', family: 'Architecture & Concepts', isBrand: false, projects: ['Clean Software Architecture'], description: 'Clean architecture principles, design patterns, separation of concerns.' },
-  { number: 42, symbol: 'Cr', name: 'Cryptography (AES/RSA)', family: 'Architecture & Concepts', isBrand: false, projects: ['Secure File Storage in the Cloud'], description: 'Hybrid symmetric and asymmetric encryption for confidentiality and data integrity.' }
+  { number: 42, symbol: 'Cr', name: 'Cryptography (AES/RSA)', family: 'Architecture & Concepts', isBrand: false, projects: ['Secure File Storage in the Cloud'], description: 'Hybrid symmetric and asymmetric encryption for confidentiality and data integrity.' },
+  { number: 43, symbol: 'CN', name: 'Computer Networks', family: 'Architecture & Concepts', isBrand: false, projects: ['Distributed Systems', 'Microservices'], description: 'TCP/IP stack, DNS, HTTP/HTTPS, OSI model, subnetting, routing protocols, and socket programming.' },
+  { number: 44, symbol: 'DB', name: 'DBMS', family: 'Architecture & Concepts', isBrand: false, projects: ['Data Analysis & Microservices', 'Relational Data Services'], description: 'Relational algebra, normalization, ACID properties, indexing, transactions, and query optimization.' },
+  { number: 45, symbol: 'OS', name: 'Operating System', family: 'Architecture & Concepts', isBrand: false, projects: ['System-Level Engineering'], description: 'Process scheduling, memory management, virtual memory, deadlocks, file systems, and concurrency.' }
 ];
 
 export const PROJECTS: Project[] = [
