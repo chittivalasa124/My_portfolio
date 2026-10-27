@@ -1,0 +1,26 @@
+{
+  "totalSolved": 10,
+  "totalQuestions": 4095,
+  "easySolved": 7,
+  "totalEasy": 974,
+  "mediumSolved": 2,
+  "totalMedium": 2135,
+  "hardSolved": 1,
+  "totalHard": 986,
+  "submissions": 24,
+  "totalActiveDays": 10,
+  "maxStreak": 2,
+  "submissionCalendar": {
+    "1780012800": 1,
+    "1780099200": 1,
+    "1780272000": 2,
+    "1785024000": 2,
+    "1785110400": 2,
+    "1785369600": 5,
+    "1785801600": 7,
+    "1785974400": 1,
+    "1786060800": 1,
+    "1793059200": 2
+  }
+}
+
