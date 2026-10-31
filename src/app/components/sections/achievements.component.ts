@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy, signal, ElementRef, ViewChild, AfterViewInit, OnDestroy, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ACHIEVEMENTS } from '../../core/data';
+import { PROUD_MOMENT_CERTIFICATES } from '../../core/data';
 import { HackerRankService } from '../../core/hackerrank.service';
 import { CodingProfilesService } from '../../core/coding-profiles.service';
 
@@ -237,57 +237,40 @@ import { CodingProfilesService } from '../../core/coding-profiles.service';
               </div>
             </a>
 
-            <!-- 04. RESUME MILESTONE METRICS -->
-            @for (ach of achievements; track ach.index; let i = $index) {
-              <div 
-                class="card-item shrink-0 w-[360px] sm:w-[460px] h-[270px] sm:h-[310px] p-8 rounded-3xl bg-white border border-[rgba(13,13,13,0.08)] flex flex-col justify-between transition-all duration-500 select-none"
+            <!-- 04. ACCENTURE CERTIFICATE CARDS -->
+            @for (certificate of certificates; track certificate.index; let i = $index) {
+              <a
+                [href]="certificate.path"
+                target="_blank"
+                rel="noopener noreferrer"
+                [attr.title]="certificate.detail"
+                [attr.aria-label]="'Open ' + certificate.title + ' PDF in a new tab'"
+                class="card-item shrink-0 w-[360px] sm:w-[460px] h-[270px] sm:h-[310px] p-8 rounded-3xl bg-white border border-[rgba(13,13,13,0.08)] flex flex-col justify-between transition-all duration-500 select-none group"
                 [ngClass]="activeCardIndex() === (i + 3) 
                   ? 'active-center-card -translate-y-3 shadow-2xl scale-102 border-neutral-300' 
                   : 'shadow-md opacity-75'"
               >
-                <!-- Platform Badge & Index -->
                 <div class="flex items-center justify-between">
                   <div class="w-12 h-12 rounded-2xl bg-[#f4f2ee] border border-[rgba(13,13,13,0.08)] flex items-center justify-center font-mono text-xs font-bold text-[#0d0d0d] shadow-inner">
-                    @if (ach.platform === 'KNSFPCL') {
-                      <span>KN</span>
-                    } @else if (ach.platform === 'BRAU') {
-                      <span>MCA</span>
-                    } @else if (ach.platform === 'Basara') {
-                      <span>B.SC</span>
-                    } @else if (ach.platform === 'Experience') {
-                      <span>EXP</span>
-                    } @else {
-                      <span>CERT</span>
-                    }
+                    <span>ACC</span>
                   </div>
-
-                  <span class="font-mono text-xs text-[#77756f]">{{ ach.index }}</span>
+                  <span class="font-mono text-xs text-[#77756f]">{{ certificate.index }}</span>
                 </div>
 
-                <!-- Bottom Layout: Left Details + Right Huge Metric Number -->
                 <div class="flex items-end justify-between gap-4">
                   <div class="max-w-[220px]">
-                    <h3 class="font-bold text-lg text-[#0d0d0d] tracking-tight leading-tight mb-1">
-                      {{ ach.label }}
+                    <h3 class="font-bold text-lg text-[#0d0d0d] tracking-tight leading-tight mb-1 group-hover:underline">
+                      {{ certificate.title }}
                     </h3>
-                    <p class="font-mono text-xs text-[#77756f] mb-2">
-                      {{ ach.caption }}
-                    </p>
-                    <p class="text-[11px] text-[#3a3a3a] leading-relaxed line-clamp-2">
-                      {{ ach.detail }}
-                    </p>
+                    <p class="font-mono text-xs text-[#77756f] mb-2">{{ certificate.issuer }}</p>
+                    <p class="text-[11px] text-[#3a3a3a] leading-relaxed line-clamp-2">{{ certificate.detail }}</p>
                   </div>
-
-                  <div class="text-right">
-                    <div class="text-5xl sm:text-6xl font-bold tracking-tight text-[#0d0d0d] font-mono leading-none">
-                      @if (ach.prefix) { <span class="text-4xl text-[#77756f]">{{ ach.prefix }}</span> }
-                      <span>{{ ach.targetNumber }}</span>
-                      @if (ach.suffix) { <span class="text-2xl text-[#77756f] font-sans">{{ ach.suffix }}</span> }
-                    </div>
+                  <div class="text-right font-mono text-xs text-[#77756f] flex items-center gap-1">
+                    <span>View PDF</span>
+                    <span class="text-sm transform group-hover:translate-x-1 group-hover:-translate-y-0.5 transition-transform">↗</span>
                   </div>
                 </div>
-
-              </div>
+              </a>
             }
 
             <!-- End of Track Card -->
@@ -321,7 +304,7 @@ export class AchievementsComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('containerRef') containerRef!: ElementRef<HTMLElement>;
   @ViewChild('trackRef') trackRef!: ElementRef<HTMLElement>;
 
-  readonly achievements = ACHIEVEMENTS;
+  readonly certificates = PROUD_MOMENT_CERTIFICATES;
   readonly hrService = inject(HackerRankService);
   readonly codingProfiles = inject(CodingProfilesService);
 
@@ -330,7 +313,7 @@ export class AchievementsComponent implements OnInit, AfterViewInit, OnDestroy {
   readonly gfg = this.codingProfiles.geeksforgeeks;
 
   get totalCardsCount(): number {
-    return this.achievements.length + 3; // HackerRank + CodeChef + GeeksforGeeks + Achievements
+    return this.certificates.length + 3;
   }
 
   totalPinnedHeight = signal<number>(3600);

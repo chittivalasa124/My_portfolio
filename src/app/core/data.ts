@@ -37,16 +37,12 @@ export interface Certification {
   url?: string;
 }
 
-export interface Achievement {
+export interface ProudMomentCertificate {
   index: string;
-  metric: string;
-  targetNumber: number;
-  prefix?: string;
-  suffix?: string;
-  label: string;
-  caption: string;
+  title: string;
+  issuer: string;
   detail: string;
-  platform: string;
+  path: string;
 }
 
 export const PROFILE = {
@@ -331,68 +327,18 @@ export const EXPERIENCE_TIMELINE: ExperienceItem[] = [
   }
 ];
 
-export const ACHIEVEMENTS: Achievement[] = [
-  {
-    index: '01 / 06',
-    metric: '25%',
-    targetNumber: 25,
-    prefix: '-',
-    suffix: '%',
-    label: 'Page Load Time',
-    caption: 'Performance Optimization',
-    detail: 'Achieved through code optimization and efficient API integration at KNSFPCL.',
-    platform: 'KNSFPCL'
-  },
-  {
-    index: '02 / 06',
-    metric: '50%',
-    targetNumber: 50,
-    prefix: '+',
-    suffix: '%',
-    label: 'User Satisfaction',
-    caption: 'User Engagement & UX',
-    detail: 'Enhanced content presentation and intuitive responsive interface design.',
-    platform: 'KNSFPCL'
-  },
-  {
-    index: '03 / 06',
-    metric: '7.6',
-    targetNumber: 7.6,
-    suffix: ' / 10',
-    label: 'MCA CGPA',
-    caption: 'Dr. B.R. Ambedkar University',
-    detail: 'Master of Computer Applications academic distinction (2022–2024).',
-    platform: 'BRAU'
-  },
-  {
-    index: '04 / 06',
-    metric: '7.2',
-    targetNumber: 7.2,
-    suffix: ' / 10',
-    label: 'B.Sc Computer Science CGPA',
-    caption: 'Sri Basara Degree College',
-    detail: 'Undergraduate distinction in computer science foundational studies (2018–2021).',
-    platform: 'Basara'
-  },
-  {
-    index: '05 / 06',
-    metric: '3',
-    targetNumber: 3,
-    suffix: ' Internships',
-    label: 'Web Internships Completed',
-    caption: 'Industry Experience',
-    detail: 'Completed software development internships across Oasis Infotech, Prodigy, and Bharat Intern.',
-    platform: 'Experience'
-  },
-  {
-    index: '06 / 06',
-    metric: '4',
-    targetNumber: 4,
-    suffix: ' Certifications',
-    label: 'Verified Credentials',
-    caption: 'Cloud & Engineering',
-    detail: 'Microsoft Azure Fundamentals, Forage Accenture Consultant, Analytics & Career Essentials.',
-    platform: 'Certifications'
-  }
-];
+export const PROUD_MOMENT_CERTIFICATES: ProudMomentCertificate[] = Array.from(
+  { length: 7 },
+  (_, index) => {
+    const number = index + 1;
+    const certificateNumber = String(number).padStart(2, '0');
 
+    return {
+      index: `${certificateNumber} / 07`,
+      title: `Accenture Certificate ${certificateNumber}`,
+      issuer: 'Accenture',
+      detail: `Open certificate ${number} to view its full credential and verification details.`,
+      path: `certificate_${number}.pdf`
+    };
+  }
+);
