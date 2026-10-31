@@ -43,6 +43,7 @@ export interface ProudMomentCertificate {
   issuer: string;
   detail: string;
   path: string;
+  previewPath: string;
 }
 
 export const PROFILE = {
@@ -338,7 +339,8 @@ export const PROUD_MOMENT_CERTIFICATES: ProudMomentCertificate[] = Array.from(
       title: `Accenture Certificate ${certificateNumber}`,
       issuer: 'Accenture',
       detail: `Open certificate ${number} to view its full credential and verification details.`,
-      path: `certificate_${number}.pdf`
+      path: `certificate_${number}.pdf`,
+      previewPath: `certificate_${number}-preview.png`
     };
   }
 );

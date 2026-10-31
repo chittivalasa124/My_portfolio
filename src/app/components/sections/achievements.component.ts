@@ -250,20 +250,27 @@ import { CodingProfilesService } from '../../core/coding-profiles.service';
                   ? 'active-center-card -translate-y-3 shadow-2xl scale-102 border-neutral-300' 
                   : 'shadow-md opacity-75'"
               >
-                <div class="flex items-center justify-between">
-                  <div class="w-12 h-12 rounded-2xl bg-[#f4f2ee] border border-[rgba(13,13,13,0.08)] flex items-center justify-center font-mono text-xs font-bold text-[#0d0d0d] shadow-inner">
-                    <span>ACC</span>
-                  </div>
-                  <span class="font-mono text-xs text-[#77756f]">{{ certificate.index }}</span>
+                <div class="relative h-[155px] w-full overflow-hidden rounded-xl border border-[rgba(13,13,13,0.08)] bg-[#f4f2ee]">
+                  <img
+                    [src]="certificate.previewPath"
+                    [alt]="certificate.title + ' preview'"
+                    class="h-full w-full object-contain"
+                    loading="lazy"
+                  />
+                  <span class="absolute left-2 top-2 rounded-lg bg-white/90 px-2 py-1 font-mono text-[10px] font-bold text-[#0d0d0d] shadow">
+                    ACC
+                  </span>
+                  <span class="absolute right-2 top-2 rounded-lg bg-white/90 px-2 py-1 font-mono text-[10px] text-[#77756f] shadow">
+                    {{ certificate.index }}
+                  </span>
                 </div>
 
                 <div class="flex items-end justify-between gap-4">
-                  <div class="max-w-[220px]">
-                    <h3 class="font-bold text-lg text-[#0d0d0d] tracking-tight leading-tight mb-1 group-hover:underline">
+                  <div class="min-w-0">
+                    <h3 class="font-bold text-base text-[#0d0d0d] tracking-tight leading-tight mb-1 group-hover:underline">
                       {{ certificate.title }}
                     </h3>
-                    <p class="font-mono text-xs text-[#77756f] mb-2">{{ certificate.issuer }}</p>
-                    <p class="text-[11px] text-[#3a3a3a] leading-relaxed line-clamp-2">{{ certificate.detail }}</p>
+                    <p class="font-mono text-xs text-[#77756f]">{{ certificate.issuer }} · Open PDF</p>
                   </div>
                   <div class="text-right font-mono text-xs text-[#77756f] flex items-center gap-1">
                     <span>View PDF</span>
