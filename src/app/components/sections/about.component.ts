@@ -424,11 +424,11 @@ import { GithubService } from '../../core/github.service';
             </div>
           </div>
 
-          <!-- Heatmap Matrix: 52 Weeks x 7 Days -->
+          <!-- Heatmap Matrix: 53 Columns x 7 Days matching GitHub 1:1 -->
           <div class="pt-6 overflow-x-auto no-scrollbar">
-            <div class="min-w-[680px]">
+            <div class="min-w-[720px]">
               <div class="flex items-center justify-between text-xs font-mono text-[#77756f] mb-3">
-                <span class="font-semibold text-[#0d0d0d]">{{ gh().totalContributions }} contributions in the past year</span>
+                <span class="font-semibold text-[#0d0d0d]">{{ gh().totalContributions }} contributions in the last year</span>
                 <div class="flex items-center gap-1.5 text-[10px]">
                   <span>Less</span>
                   <span class="w-2.5 h-2.5 rounded-xs bg-[#ebedf0] border border-[rgba(0,0,0,0.05)]"></span>
@@ -440,31 +440,44 @@ import { GithubService } from '../../core/github.service';
                 </div>
               </div>
 
-              <!-- Contribution Squares Grid -->
-              <div class="grid grid-flow-col grid-rows-7 gap-1 p-3 rounded-2xl bg-[#f4f2ee] border border-[rgba(13,13,13,0.06)]">
-                @for (day of gh().contributions; track day.date) {
-                  <div
-                    class="w-2.5 h-2.5 rounded-xs transition-transform duration-200 hover:scale-125 hover:z-10 cursor-pointer"
-                    [ngClass]="getDayColorClass(day.level)"
-                    [attr.title]="day.date + ': ' + day.count + ' contributions'"
-                  ></div>
+              <!-- Month Headers with exact GitHub column spans -->
+              <div class="flex text-[10px] font-mono text-[#77756f] mb-1.5 pl-7">
+                @for (m of gh().months; track m.name + $index) {
+                  <div [style.flex]="m.colSpan" class="text-left truncate">
+                    {{ m.name }}
+                  </div>
                 }
+                <!-- Trailing spacer for col 53 -->
+                <div style="flex: 1"></div>
               </div>
 
-              <!-- Month Labels -->
-              <div class="flex justify-between text-[10px] font-mono text-[#77756f] px-2 pt-2">
-                <span>Nov</span>
-                <span>Dec</span>
-                <span>Jan</span>
-                <span>Feb</span>
-                <span>Mar</span>
-                <span>Apr</span>
-                <span>May</span>
-                <span>Jun</span>
-                <span>Jul</span>
-                <span>Aug</span>
-                <span>Sep</span>
-                <span>Oct</span>
+              <!-- Main Calendar with Day-of-week labels on the left -->
+              <div class="flex gap-2 items-center">
+                <!-- Day-of-week labels matching GitHub -->
+                <div class="flex flex-col justify-between h-[82px] text-[9px] font-mono text-[#77756f] select-none py-[1px]">
+                  <span></span>
+                  <span>Mon</span>
+                  <span></span>
+                  <span>Wed</span>
+                  <span></span>
+                  <span>Fri</span>
+                  <span></span>
+                </div>
+
+                <!-- 53-Column x 7-Row Contribution Grid -->
+                <div class="grid grid-flow-col grid-rows-7 gap-[3px] p-2.5 rounded-2xl bg-[#f4f2ee] border border-[rgba(13,13,13,0.06)] flex-1">
+                  @for (day of gh().contributions; track day.date + '-' + day.col + '-' + day.row) {
+                    @if (day.level === -1) {
+                      <div class="w-2.5 h-2.5 opacity-0 pointer-events-none"></div>
+                    } @else {
+                      <div
+                        class="w-2.5 h-2.5 rounded-xs transition-transform duration-200 hover:scale-125 hover:z-10 cursor-pointer"
+                        [ngClass]="getDayColorClass(day.level)"
+                        [attr.title]="day.tooltip || (day.count + ' contributions on ' + day.date)"
+                      ></div>
+                    }
+                  }
+                </div>
               </div>
             </div>
           </div>

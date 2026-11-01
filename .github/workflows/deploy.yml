@@ -1,13 +1,15 @@
 name: Deploy Angular portfolio to GitHub Pages
 
 on:
+  schedule:
+    - cron: '*/30 * * * *' # Auto-sync live contributions & deploy every 30 minutes
   push:
     branches:
       - main
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -17,6 +19,8 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -25,7 +29,17 @@ jobs:
           cache: npm
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
+
+      - name: Fetch live GitHub contributions
+        run: node scripts/fetch-github.js
+
+      - name: Commit updated contributions if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add public/github-contributions.json
+          git diff --staged --quiet || (git commit -m "chore(contributions): sync live GitHub contributions [skip ci]" && git push)
 
       - name: Build Angular application
         run: npm run build -- --configuration production --base-href /My_portfolio/
