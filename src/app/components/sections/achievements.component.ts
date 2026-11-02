@@ -330,6 +330,7 @@ export class AchievementsComponent implements OnInit, AfterViewInit, OnDestroy {
 
   private maxTranslate = 0;
   private onScrollHandler = () => this.handleScroll();
+  private onWheelHandler = (event: WheelEvent) => this.handleWheel(event);
 
   ngOnInit(): void {
     this.hrService.fetchBadges();
@@ -340,6 +341,7 @@ export class AchievementsComponent implements OnInit, AfterViewInit, OnDestroy {
       setTimeout(() => this.calculateDimensions(), 300);
       window.addEventListener('scroll', this.onScrollHandler, { passive: true });
       window.addEventListener('resize', this.onScrollHandler, { passive: true });
+      this.containerRef.nativeElement.addEventListener('wheel', this.onWheelHandler, { passive: false });
     }
   }
 
@@ -347,7 +349,20 @@ export class AchievementsComponent implements OnInit, AfterViewInit, OnDestroy {
     if (typeof window !== 'undefined') {
       window.removeEventListener('scroll', this.onScrollHandler);
       window.removeEventListener('resize', this.onScrollHandler);
+      this.containerRef?.nativeElement.removeEventListener('wheel', this.onWheelHandler);
     }
+  }
+
+  private handleWheel(event: WheelEvent): void {
+    if (Math.abs(event.deltaX) <= Math.abs(event.deltaY)) return;
+
+    event.preventDefault();
+    const delta = event.deltaMode === WheelEvent.DOM_DELTA_LINE
+      ? event.deltaX * 16
+      : event.deltaMode === WheelEvent.DOM_DELTA_PAGE
+        ? event.deltaX * window.innerHeight
+        : event.deltaX;
+    window.scrollBy({ top: delta, behavior: 'auto' });
   }
 
   calculateDimensions(): void {
