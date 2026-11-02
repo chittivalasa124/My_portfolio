@@ -250,11 +250,8 @@ import { GithubService } from '../../core/github.service';
 
       <!-- LIVE LEETCODE ACTIVITY WIDGET -->
       <div class="mt-8 rv">
-        <a 
-          [href]="leetcodeService.profileUrl" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          class="group block p-6 sm:p-8 rounded-3xl bg-white border border-[rgba(13,13,13,0.1)] hover:border-[#0d0d0d] shadow-sm hover:shadow-xl transition-all duration-300"
+        <div
+          class="group p-6 sm:p-8 rounded-3xl bg-white border border-[rgba(13,13,13,0.1)] hover:border-[#0d0d0d] shadow-sm hover:shadow-xl transition-all duration-300"
         >
           <!-- Top Row: LeetCode Brand + Live Status Badge -->
           <div class="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-[rgba(13,13,13,0.1)]">
@@ -281,10 +278,15 @@ import { GithubService } from '../../core/github.service';
               </div>
             </div>
 
-            <div class="flex items-center gap-2 text-xs font-mono text-[#0d0d0d] font-semibold">
+            <a
+              [href]="leetcodeService.profileUrl"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center gap-2 text-xs font-mono text-[#0d0d0d] font-semibold"
+            >
               <span>View Profile</span>
               <span class="text-sm transform group-hover:translate-x-1 group-hover:-translate-y-0.5 transition-transform">↗</span>
-            </div>
+            </a>
           </div>
 
           <!-- Middle Metrics Grid -->
@@ -355,13 +357,30 @@ import { GithubService } from '../../core/github.service';
               </div>
 
               <!-- Contribution Squares Grid -->
-              <div class="grid grid-flow-col grid-rows-7 gap-1 p-3 rounded-2xl bg-[#f4f2ee] border border-[rgba(13,13,13,0.06)]">
+              <div #leetcodeGrid class="grid grid-flow-col grid-rows-7 gap-1 p-3 rounded-2xl bg-[#f4f2ee] border border-[rgba(13,13,13,0.06)]">
                 @for (day of lc().calendar; track day.date) {
-                  <div
-                    class="w-2.5 h-2.5 rounded-xs transition-transform duration-200 hover:scale-125 hover:z-10 cursor-pointer"
-                    [ngClass]="getDayColorClass(day.level)"
-                    [attr.title]="day.date + ': ' + day.count + ' submission' + (day.count === 1 ? '' : 's')"
-                  ></div>
+                  <div class="relative">
+                    <button
+                      type="button"
+                      class="block w-2.5 h-2.5 rounded-xs transition-transform duration-200 hover:scale-125 hover:z-10"
+                      [ngClass]="getDayColorClass(day.level)"
+                      [attr.aria-label]="day.date + ': ' + day.count + ' submission' + (day.count === 1 ? '' : 's')"
+                      [attr.aria-expanded]="selectedLeetCodeDate() === day.date"
+                      (mouseenter)="hoverLeetCodeDate(day.date)"
+                      (mouseleave)="clearHoveredLeetCodeDate(day.date)"
+                      (focus)="hoverLeetCodeDate(day.date)"
+                      (blur)="clearHoveredLeetCodeDate(day.date)"
+                      (click)="toggleLeetCodeTooltip(day.date)"
+                    ></button>
+                    @if ((selectedLeetCodeDate() ?? hoveredLeetCodeDate()) === day.date) {
+                      <span
+                        role="tooltip"
+                        class="absolute bottom-full left-1/2 z-20 mb-2 -translate-x-1/2 whitespace-nowrap rounded-md bg-[#0d0d0d] px-2 py-1 text-[10px] font-mono text-white shadow-lg"
+                      >
+                        {{ day.count }} {{ day.count === 1 ? 'submission' : 'submissions' }} on {{ day.date }}
+                      </span>
+                    }
+                  </div>
                 }
               </div>
 
@@ -382,7 +401,7 @@ import { GithubService } from '../../core/github.service';
               </div>
             </div>
           </div>
-        </a>
+        </div>
       </div>
 
       <!-- LIVE GITHUB CONTRIBUTIONS ACTIVITY WIDGET (Under LeetCode) -->
@@ -537,6 +556,7 @@ import { GithubService } from '../../core/github.service';
 })
 export class AboutComponent implements OnInit {
   @ViewChild('contributionGrid') private contributionGrid?: ElementRef<HTMLElement>;
+  @ViewChild('leetcodeGrid') private leetcodeGrid?: ElementRef<HTMLElement>;
 
   readonly profile = PROFILE;
   readonly leetcodeService = inject(LeetCodeService);
@@ -545,6 +565,8 @@ export class AboutComponent implements OnInit {
   isFlipped = signal<boolean>(false);
   readonly selectedContributionDate = signal<string | null>(null);
   readonly hoveredContributionDate = signal<string | null>(null);
+  readonly selectedLeetCodeDate = signal<string | null>(null);
+  readonly hoveredLeetCodeDate = signal<string | null>(null);
   readonly lc = this.leetcodeService.stats;
   readonly gh = this.githubService.stats;
 
@@ -556,9 +578,15 @@ export class AboutComponent implements OnInit {
   @HostListener('document:click', ['$event'])
   dismissContributionTooltipOnOutsideClick(event: MouseEvent): void {
     const target = event.target;
-    if (target instanceof Node && !this.contributionGrid?.nativeElement.contains(target)) {
-      this.selectedContributionDate.set(null);
-      this.hoveredContributionDate.set(null);
+    if (target instanceof Node) {
+      if (!this.contributionGrid?.nativeElement.contains(target)) {
+        this.selectedContributionDate.set(null);
+        this.hoveredContributionDate.set(null);
+      }
+      if (!this.leetcodeGrid?.nativeElement.contains(target)) {
+        this.selectedLeetCodeDate.set(null);
+        this.hoveredLeetCodeDate.set(null);
+      }
     }
   }
 
@@ -577,6 +605,20 @@ export class AboutComponent implements OnInit {
   clearHoveredContributionDate(date: string): void {
     if (this.hoveredContributionDate() === date) {
       this.hoveredContributionDate.set(null);
+    }
+  }
+
+  toggleLeetCodeTooltip(date: string): void {
+    this.selectedLeetCodeDate.update((selectedDate) => selectedDate === date ? null : date);
+  }
+
+  hoverLeetCodeDate(date: string): void {
+    this.hoveredLeetCodeDate.set(date);
+  }
+
+  clearHoveredLeetCodeDate(date: string): void {
+    if (this.hoveredLeetCodeDate() === date) {
+      this.hoveredLeetCodeDate.set(null);
     }
   }
 
