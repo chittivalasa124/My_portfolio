@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, signal, OnInit, inject } from '@angular/core';
+import { Component, ChangeDetectionStrategy, ElementRef, HostListener, signal, OnInit, inject, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PROFILE } from '../../core/data';
 import { LeetCodeService } from '../../core/leetcode.service';
@@ -387,11 +387,8 @@ import { GithubService } from '../../core/github.service';
 
       <!-- LIVE GITHUB CONTRIBUTIONS ACTIVITY WIDGET (Under LeetCode) -->
       <div class="mt-6 rv">
-        <a 
-          [href]="githubService.profileUrl" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          class="group block p-6 sm:p-8 rounded-3xl bg-white border border-[rgba(13,13,13,0.1)] hover:border-[#0d0d0d] shadow-sm hover:shadow-xl transition-all duration-300"
+        <div
+          class="group p-6 sm:p-8 rounded-3xl bg-white border border-[rgba(13,13,13,0.1)] hover:border-[#0d0d0d] shadow-sm hover:shadow-xl transition-all duration-300"
         >
           <!-- Top Row: GitHub Brand + Live Stats -->
           <div class="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-[rgba(13,13,13,0.1)]">
@@ -418,10 +415,15 @@ import { GithubService } from '../../core/github.service';
               </div>
             </div>
 
-            <div class="flex items-center gap-2 text-xs font-mono text-[#0d0d0d] font-semibold">
+            <a
+              [href]="githubService.profileUrl"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center gap-2 text-xs font-mono text-[#0d0d0d] font-semibold"
+            >
               <span>View GitHub</span>
               <span class="text-sm transform group-hover:translate-x-1 group-hover:-translate-y-0.5 transition-transform">↗</span>
-            </div>
+            </a>
           </div>
 
           <!-- Heatmap Matrix: 53 Columns x 7 Days matching GitHub 1:1 -->
@@ -465,23 +467,40 @@ import { GithubService } from '../../core/github.service';
                 </div>
 
                 <!-- 53-Column x 7-Row Contribution Grid -->
-                <div class="grid grid-flow-col grid-rows-7 gap-[3px] p-2.5 rounded-2xl bg-[#f4f2ee] border border-[rgba(13,13,13,0.06)] flex-1">
+                <div #contributionGrid class="grid grid-flow-col grid-rows-7 gap-[3px] p-2.5 rounded-2xl bg-[#f4f2ee] border border-[rgba(13,13,13,0.06)] flex-1">
                   @for (day of gh().contributions; track day.date + '-' + day.col + '-' + day.row) {
                     @if (day.level === -1) {
                       <div class="w-2.5 h-2.5 opacity-0 pointer-events-none"></div>
                     } @else {
-                      <div
-                        class="w-2.5 h-2.5 rounded-xs transition-transform duration-200 hover:scale-125 hover:z-10 cursor-pointer"
-                        [ngClass]="getDayColorClass(day.level)"
-                        [attr.title]="day.tooltip || (day.count + ' contributions on ' + day.date)"
-                      ></div>
+                      <div class="relative">
+                        <button
+                          type="button"
+                          class="block w-2.5 h-2.5 rounded-xs transition-transform duration-200 hover:scale-125 hover:z-10"
+                          [ngClass]="getDayColorClass(day.level)"
+                          [attr.aria-label]="day.tooltip || (day.count + ' contributions on ' + day.date)"
+                          [attr.aria-expanded]="selectedContributionDate() === day.date"
+                          (mouseenter)="hoverContributionDate(day.date)"
+                          (mouseleave)="clearHoveredContributionDate(day.date)"
+                          (focus)="hoverContributionDate(day.date)"
+                          (blur)="clearHoveredContributionDate(day.date)"
+                          (click)="toggleContributionTooltip(day.date)"
+                        ></button>
+                        @if ((selectedContributionDate() ?? hoveredContributionDate()) === day.date) {
+                          <span
+                            role="tooltip"
+                            class="absolute bottom-full left-1/2 z-20 mb-2 -translate-x-1/2 whitespace-nowrap rounded-md bg-[#0d0d0d] px-2 py-1 text-[10px] font-mono text-white shadow-lg"
+                          >
+                            {{ day.count }} {{ day.count === 1 ? 'contribution' : 'contributions' }} on {{ day.date }}
+                          </span>
+                        }
+                      </div>
                     }
                   }
                 </div>
               </div>
             </div>
           </div>
-        </a>
+        </div>
       </div>
 
     </section>
@@ -517,11 +536,15 @@ import { GithubService } from '../../core/github.service';
   `]
 })
 export class AboutComponent implements OnInit {
+  @ViewChild('contributionGrid') private contributionGrid?: ElementRef<HTMLElement>;
+
   readonly profile = PROFILE;
   readonly leetcodeService = inject(LeetCodeService);
   readonly githubService = inject(GithubService);
 
   isFlipped = signal<boolean>(false);
+  readonly selectedContributionDate = signal<string | null>(null);
+  readonly hoveredContributionDate = signal<string | null>(null);
   readonly lc = this.leetcodeService.stats;
   readonly gh = this.githubService.stats;
 
@@ -530,8 +553,31 @@ export class AboutComponent implements OnInit {
     this.githubService.fetchStats();
   }
 
+  @HostListener('document:click', ['$event'])
+  dismissContributionTooltipOnOutsideClick(event: MouseEvent): void {
+    const target = event.target;
+    if (target instanceof Node && !this.contributionGrid?.nativeElement.contains(target)) {
+      this.selectedContributionDate.set(null);
+      this.hoveredContributionDate.set(null);
+    }
+  }
+
   toggleFlip(): void {
     this.isFlipped.update((v) => !v);
+  }
+
+  toggleContributionTooltip(date: string): void {
+    this.selectedContributionDate.update((selectedDate) => selectedDate === date ? null : date);
+  }
+
+  hoverContributionDate(date: string): void {
+    this.hoveredContributionDate.set(date);
+  }
+
+  clearHoveredContributionDate(date: string): void {
+    if (this.hoveredContributionDate() === date) {
+      this.hoveredContributionDate.set(null);
+    }
   }
 
   getDayColorClass(level: number): string {
