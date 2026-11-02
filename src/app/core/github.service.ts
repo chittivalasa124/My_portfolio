@@ -111,17 +111,40 @@ export class GithubService {
       })
       .then((apiData) => {
         if (apiData && Array.isArray(apiData.contributions) && apiData.contributions.length > 0) {
-          const activeDays = apiData.contributions.filter((d: any) => d && d.count > 0);
-          if (activeDays.length > 0) {
-            this.reconstructFromApi(apiData.contributions, apiData.total);
-            return;
-          }
+          this.reconstructFromApi(apiData.contributions, apiData.total);
+        } else {
+          throw new Error('Empty or malformed contribution payload');
         }
-        throw new Error('No active contributions from direct API');
       })
       .catch(() => {
         // Fallback: load auto-synced local JSON (updated every 30m by GitHub Action)
-        this.loadLocalJsonFallback();
+        fetch(`github-contributions.json?t=${Date.now()}`, { cache: 'no-store' })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data && Array.isArray(data.contributions)) {
+              this.stats.update((s) => ({
+                ...s,
+                totalContributions:
+                  typeof data.totalContributions === 'number'
+                    ? data.totalContributions
+                    : s.totalContributions,
+                publicRepos:
+                  typeof data.publicRepos === 'number' ? data.publicRepos : s.publicRepos,
+                followers:
+                  typeof data.followers === 'number' ? data.followers : s.followers,
+                months:
+                  Array.isArray(data.months) && data.months.length > 0 ? data.months : s.months,
+                contributions: data.contributions,
+                loading: false,
+                error: false,
+              }));
+            } else {
+              throw new Error('Malformed local JSON fallback');
+            }
+          })
+          .catch(() => {
+            this.stats.update((s) => ({ ...s, loading: false, error: true }));
+          });
       });
 
     // 3. Keep live by auto-polling every 30 minutes while the browser tab is open
@@ -130,39 +153,6 @@ export class GithubService {
         this.fetchStats();
       }, 30 * 60 * 1000); // 30 minutes
     }
-  }
-
-  private loadLocalJsonFallback(): void {
-    fetch(`github-contributions.json?t=${Date.now()}`, { cache: 'no-store' })
-      .then((res) => {
-        if (!res.ok) throw new Error(`Local JSON status ${res.status}`);
-        return res.json();
-      })
-      .then((data) => {
-        if (data && Array.isArray(data.contributions) && data.contributions.length > 0) {
-          this.stats.update((s) => ({
-            ...s,
-            totalContributions:
-              typeof data.totalContributions === 'number'
-                ? data.totalContributions
-                : s.totalContributions,
-            publicRepos:
-              typeof data.publicRepos === 'number' ? data.publicRepos : s.publicRepos,
-            followers:
-              typeof data.followers === 'number' ? data.followers : s.followers,
-            months:
-              Array.isArray(data.months) && data.months.length > 0 ? data.months : s.months,
-            contributions: data.contributions,
-            loading: false,
-            error: false,
-          }));
-        } else {
-          throw new Error('Malformed local JSON fallback');
-        }
-      })
-      .catch(() => {
-        this.stats.update((s) => ({ ...s, loading: false, error: true }));
-      });
   }
 
   private reconstructFromApi(
@@ -213,7 +203,7 @@ export class GithubService {
           row: r,
           col: c,
           tooltip:
-            count > 0 ? `${count} contribution(s) on ${dateStr}` : `No contributions on ${dateStr}`,
+            count > 0 ? `${count} contributions on ${dateStr}` : `No contributions on ${dateStr}`,
         });
       }
     }

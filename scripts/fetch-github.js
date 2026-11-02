@@ -1,36 +1,27 @@
 const fs = require('fs');
+const path = require('path');
 
-async function syncGitHubContributions(username = process.env.GITHUB_USER || process.argv[2] || 'chittivalasa124') {
+async function syncGitHubContributions(username = 'chittivalasa124') {
   console.log(`[sync-github] Fetching live contributions for ${username}...`);
 
-  let existingData = null;
-  const jsonPath = 'public/github-contributions.json';
-  if (fs.existsSync(jsonPath)) {
-    try {
-      existingData = JSON.parse(fs.readFileSync(jsonPath, 'utf8'));
-    } catch {}
+  const url = `https://github.com/users/${username}/contributions`;
+  const res = await fetch(url, {
+    headers: {
+      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+      'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+    }
+  });
+
+  if (!res.ok) {
+    throw new Error(`Failed to fetch from GitHub: ${res.status} ${res.statusText}`);
   }
 
-  const url = `https://github.com/users/${username}/contributions`;
-  let html = '';
-  try {
-    const res = await fetch(url, {
-      headers: {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-      }
-    });
-    if (res.ok) {
-      html = await res.text();
-    }
-  } catch (err) {
-    console.warn(`[sync-github] Failed to fetch HTML from GitHub: ${err.message}`);
-  }
+  const html = await res.text();
 
   // 1. Parse total contributions count
   const totalMatch = html.match(/([0-9,]+)\s+contributions\s+in\s+the\s+last\s+year/i);
-  let totalContributions = totalMatch ? parseInt(totalMatch[1].replace(/,/g, ''), 10) : 0;
-  console.log(`[sync-github] Scraped total contributions: ${totalContributions}`);
+  const totalContributions = totalMatch ? parseInt(totalMatch[1].replace(/,/g, ''), 10) : 0;
+  console.log(`[sync-github] Total contributions: ${totalContributions}`);
 
   // 2. Parse tooltips: <tool-tip ... for="contribution-day-component-C-R">...Text...</tool-tip>
   const tooltips = new Map();
@@ -70,28 +61,6 @@ async function syncGitHubContributions(username = process.env.GITHUB_USER || pro
 
   console.log(`[sync-github] Scraped ${rawDateMap.size} unique contribution days`);
 
-  // Check if profile activity was marked private or 0 while existing cached data had active days
-  let activeScrapedCount = 0;
-  for (const item of rawDateMap.values()) {
-    if (item.count > 0 || item.level > 0) activeScrapedCount++;
-  }
-
-  if (activeScrapedCount === 0 && existingData && Array.isArray(existingData.contributions)) {
-    const existingActive = existingData.contributions.filter(c => (c.count > 0 || c.level > 0));
-    if (existingActive.length > 0) {
-      console.log(`[sync-github] Profile activity is currently private or unindexed; preserving ${existingActive.length} existing active days (${existingData.totalContributions || 204} contributions).`);
-      totalContributions = existingData.totalContributions || totalContributions || 204;
-      for (const item of existingActive) {
-        rawDateMap.set(item.date, {
-          date: item.date,
-          count: item.count || (item.level > 0 ? item.level : 1),
-          level: item.level || 1,
-          tooltip: item.tooltip || `${item.count || item.level || 1} contribution(s) on ${item.date}`
-        });
-      }
-    }
-  }
-
   // 4. Scrape dynamic month headers directly from GitHub table
   const months = [];
   const monthRegex = /<td[^>]*class="[^"]*ContributionCalendar-label[^"]*"[^>]*colspan="([0-9]+)"[^>]*>[\s\S]*?<span aria-hidden="true"[^>]*>([A-Za-z]{3})<\/span>[\s\S]*?<\/td>/gi;
@@ -102,39 +71,16 @@ async function syncGitHubContributions(username = process.env.GITHUB_USER || pro
       colSpan: parseInt(mMatch[1], 10)
     });
   }
-
-  // Fallback month headers if not scrapable
-  if (months.length === 0) {
-    const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-    const now = new Date();
-    const dayOfWeek = now.getUTCDay();
-    const endSaturday = new Date(now.getTime() + (6 - dayOfWeek) * 86400000);
-    const baseSun = new Date(endSaturday.getTime() - (53 * 7 - 1) * 86400000);
-
-    let curM = -1;
-    let span = 0;
-    for (let c = 0; c < 53; c++) {
-      const mid = new Date(baseSun.getTime() + (c * 7 + 3) * 86400000);
-      const m = mid.getUTCMonth();
-      if (m !== curM) {
-        if (curM !== -1) months.push({ name: monthNames[curM], colSpan: span });
-        curM = m;
-        span = 1;
-      } else {
-        span++;
-      }
-    }
-    if (span > 0 && curM !== -1) months.push({ name: monthNames[curM], colSpan: span });
-  }
-
-  console.log(`[sync-github] Dynamic month headers (${months.length}): ${months.map(m => `${m.name}(${m.colSpan})`).join(', ')}`);
+  console.log(`[sync-github] Scraped ${months.length} dynamic month headers: ${months.map(m => `${m.name}(${m.colSpan})`).join(', ')}`);
 
   // 5. Construct exact 53-week x 7-day column-major matrix dynamically
-  const now = new Date();
-  const dayOfWeek = now.getUTCDay();
-  const endSaturday = new Date(now.getTime() + (6 - dayOfWeek) * 86400000);
-  const baseSunday = new Date(endSaturday.getTime() - (53 * 7 - 1) * 86400000);
-  console.log(`[sync-github] Calendar base Sunday computed: ${baseSunday.toISOString().split('T')[0]}`);
+  const allDates = Array.from(rawDateMap.keys()).sort();
+  if (allDates.length === 0) {
+    throw new Error('No contribution dates found in scraped GitHub HTML');
+  }
+  const firstDate = new Date(allDates[0] + 'T00:00:00Z');
+  const baseSunday = new Date(firstDate.getTime() - firstDate.getUTCDay() * 86400000);
+  console.log(`[sync-github] Calendar base Sunday computed dynamically: ${baseSunday.toISOString().split('T')[0]}`);
 
   const matrix = [];
 
@@ -155,23 +101,22 @@ async function syncGitHubContributions(username = process.env.GITHUB_USER || pro
           tooltip: match.tooltip
         });
       } else {
-        // If date is in future beyond today
-        const isFuture = cellDate > now;
+        // Future day or empty cell
         matrix.push({
           date: dateStr,
           count: 0,
-          level: isFuture ? -1 : 0,
+          level: -1,
           row: r,
           col: c,
-          tooltip: isFuture ? '' : `No contributions on ${dateStr}`
+          tooltip: ''
         });
       }
     }
   }
 
   // 6. Fetch live user details directly from GitHub API
-  let publicRepos = existingData?.publicRepos || 0;
-  let followers = existingData?.followers || 0;
+  let publicRepos = 0;
+  let followers = 0;
   try {
     const userRes = await fetch(`https://api.github.com/users/${username}`, {
       headers: { 'User-Agent': 'Mozilla/5.0' }
@@ -199,12 +144,13 @@ async function syncGitHubContributions(username = process.env.GITHUB_USER || pro
     contributions: matrix
   };
 
-  fs.writeFileSync(jsonPath, JSON.stringify(payload, null, 2), 'utf8');
-  console.log(`[sync-github] Saved exact 53x7 matrix (${matrix.length} cells) to ${jsonPath}`);
+  const outputPath = path.resolve(__dirname, '../public/github-contributions.json');
+  fs.writeFileSync(outputPath, JSON.stringify(payload, null, 2), 'utf8');
+  console.log(`[sync-github] Saved exact 53x7 matrix (${matrix.length} cells) to ${outputPath}`);
 
   const activeDays = matrix.filter(d => d.count > 0);
-  console.log(`[sync-github] Active contribution days in matrix: ${activeDays.length}`);
-  console.log(`[sync-github] Total contributions: ${totalContributions}, public repos: ${publicRepos}, followers: ${followers}`);
+  console.log(`[sync-github] Active contribution days: ${activeDays.length}`);
+  activeDays.forEach(a => console.log(`  -> ${a.date} (col ${a.col}, row ${a.row}): ${a.tooltip}`));
 }
 
 syncGitHubContributions().catch(err => {
