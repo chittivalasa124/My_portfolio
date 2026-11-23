@@ -1,8 +1,8 @@
 {
   "username": "chittivalasa124",
-  "totalContributions": 395,
-  "publicRepos": 19,
-  "followers": 10,
+  "totalContributions": 0,
+  "publicRepos": 18,
+  "followers": 0,
   "months": [
     {
       "name": "Nov",
@@ -57,7 +57,7 @@
       "colSpan": 4
     }
   ],
-  "updatedAt": "2026-11-23T11:30:24.182Z",
+  "updatedAt": "2026-11-23T22:52:05.652Z",
   "contributions": [
     {
       "date": "2025-11-23",
@@ -741,11 +741,11 @@
     },
     {
       "date": "2026-02-16",
-      "count": 3,
-      "level": 2,
+      "count": 0,
+      "level": 0,
       "row": 1,
       "col": 12,
-      "tooltip": "3 contributions on February 16th."
+      "tooltip": "No contributions on February 16th."
     },
     {
       "date": "2026-02-17",
@@ -797,35 +797,35 @@
     },
     {
       "date": "2026-02-23",
-      "count": 3,
-      "level": 2,
+      "count": 0,
+      "level": 0,
       "row": 1,
       "col": 13,
-      "tooltip": "3 contributions on February 23rd."
+      "tooltip": "No contributions on February 23rd."
     },
     {
       "date": "2026-02-24",
-      "count": 1,
-      "level": 1,
+      "count": 0,
+      "level": 0,
       "row": 2,
       "col": 13,
-      "tooltip": "1 contribution on February 24th."
+      "tooltip": "No contributions on February 24th."
     },
     {
       "date": "2026-02-25",
-      "count": 1,
-      "level": 1,
+      "count": 0,
+      "level": 0,
       "row": 3,
       "col": 13,
-      "tooltip": "1 contribution on February 25th."
+      "tooltip": "No contributions on February 25th."
     },
     {
       "date": "2026-02-26",
-      "count": 1,
-      "level": 1,
+      "count": 0,
+      "level": 0,
       "row": 4,
       "col": 13,
-      "tooltip": "1 contribution on February 26th."
+      "tooltip": "No contributions on February 26th."
     },
     {
       "date": "2026-02-27",
@@ -869,19 +869,19 @@
     },
     {
       "date": "2026-03-04",
-      "count": 2,
-      "level": 1,
+      "count": 0,
+      "level": 0,
       "row": 3,
       "col": 14,
-      "tooltip": "2 contributions on March 4th."
+      "tooltip": "No contributions on March 4th."
     },
     {
       "date": "2026-03-05",
-      "count": 3,
-      "level": 2,
+      "count": 0,
+      "level": 0,
       "row": 4,
       "col": 14,
-      "tooltip": "3 contributions on March 5th."
+      "tooltip": "No contributions on March 5th."
     },
     {
       "date": "2026-03-06",
@@ -909,11 +909,11 @@
     },
     {
       "date": "2026-03-09",
-      "count": 4,
-      "level": 2,
+      "count": 0,
+      "level": 0,
       "row": 1,
       "col": 15,
-      "tooltip": "4 contributions on March 9th."
+      "tooltip": "No contributions on March 9th."
     },
     {
       "date": "2026-03-10",
@@ -925,19 +925,19 @@
     },
     {
       "date": "2026-03-11",
-      "count": 5,
-      "level": 2,
+      "count": 0,
+      "level": 0,
       "row": 3,
       "col": 15,
-      "tooltip": "5 contributions on March 11th."
+      "tooltip": "No contributions on March 11th."
     },
     {
       "date": "2026-03-12",
-      "count": 4,
-      "level": 2,
+      "count": 0,
+      "level": 0,
       "row": 4,
       "col": 15,
-      "tooltip": "4 contributions on March 12th."
+      "tooltip": "No contributions on March 12th."
     },
     {
       "date": "2026-03-13",
@@ -965,11 +965,11 @@
     },
     {
       "date": "2026-03-16",
-      "count": 4,
-      "level": 2,
+      "count": 0,
+      "level": 0,
       "row": 1,
       "col": 16,
-      "tooltip": "4 contributions on March 16th."
+      "tooltip": "No contributions on March 16th."
     },
     {
       "date": "2026-03-17",
@@ -981,11 +981,11 @@
     },
     {
       "date": "2026-03-18",
-      "count": 4,
-      "level": 2,
+      "count": 0,
+      "level": 0,
       "row": 3,
       "col": 16,
-      "tooltip": "4 contributions on March 18th."
+      "tooltip": "No contributions on March 18th."
     },
     {
       "date": "2026-03-19",
@@ -997,11 +997,11 @@
     },
     {
       "date": "2026-03-20",
-      "count": 2,
-      "level": 1,
+      "count": 0,
+      "level": 0,
       "row": 5,
       "col": 16,
-      "tooltip": "2 contributions on March 20th."
+      "tooltip": "No contributions on March 20th."
     },
     {
       "date": "2026-03-21",
@@ -1021,11 +1021,11 @@
     },
     {
       "date": "2026-03-23",
-      "count": 1,
-      "level": 1,
+      "count": 0,
+      "level": 0,
       "row": 1,
       "col": 17,
-      "tooltip": "1 contribution on March 23rd."
+      "tooltip": "No contributions on March 23rd."
     },
     {
       "date": "2026-03-24",
@@ -1053,11 +1053,11 @@
     },
     {
       "date": "2026-03-27",
-      "count": 7,
-      "level": 3,
+      "count": 0,
+      "level": 0,
       "row": 5,
       "col": 17,
-      "tooltip": "7 contributions on March 27th."
+      "tooltip": "No contributions on March 27th."
     },
     {
       "date": "2026-03-28",
@@ -1069,19 +1069,19 @@
     },
     {
       "date": "2026-03-29",
-      "count": 3,
-      "level": 2,
+      "count": 0,
+      "level": 0,
       "row": 0,
       "col": 18,
-      "tooltip": "3 contributions on March 29th."
+      "tooltip": "No contributions on March 29th."
     },
     {
       "date": "2026-03-30",
-      "count": 5,
-      "level": 2,
+      "count": 0,
+      "level": 0,
       "row": 1,
       "col": 18,
-      "tooltip": "5 contributions on March 30th."
+      "tooltip": "No contributions on March 30th."
     },
     {
       "date": "2026-03-31",
@@ -1093,19 +1093,19 @@
     },
     {
       "date": "2026-04-01",
-      "count": 1,
-      "level": 1,
+      "count": 0,
+      "level": 0,
       "row": 3,
       "col": 18,
-      "tooltip": "1 contribution on April 1st."
+      "tooltip": "No contributions on April 1st."
     },
     {
       "date": "2026-04-02",
-      "count": 1,
-      "level": 1,
+      "count": 0,
+      "level": 0,
       "row": 4,
       "col": 18,
-      "tooltip": "1 contribution on April 2nd."
+      "tooltip": "No contributions on April 2nd."
     },
     {
       "date": "2026-04-03",
@@ -1133,11 +1133,11 @@
     },
     {
       "date": "2026-04-06",
-      "count": 1,
-      "level": 1,
+      "count": 0,
+      "level": 0,
       "row": 1,
       "col": 19,
-      "tooltip": "1 contribution on April 6th."
+      "tooltip": "No contributions on April 6th."
     },
     {
       "date": "2026-04-07",
@@ -1365,11 +1365,11 @@
     },
     {
       "date": "2026-05-05",
-      "count": 4,
-      "level": 2,
+      "count": 0,
+      "level": 0,
       "row": 2,
       "col": 23,
-      "tooltip": "4 contributions on May 5th."
+      "tooltip": "No contributions on May 5th."
     },
     {
       "date": "2026-05-06",
@@ -1413,19 +1413,19 @@
     },
     {
       "date": "2026-05-11",
-      "count": 1,
-      "level": 1,
+      "count": 0,
+      "level": 0,
       "row": 1,
       "col": 24,
-      "tooltip": "1 contribution on May 11th."
+      "tooltip": "No contributions on May 11th."
     },
     {
       "date": "2026-05-12",
-      "count": 1,
-      "level": 1,
+      "count": 0,
+      "level": 0,
       "row": 2,
       "col": 24,
-      "tooltip": "1 contribution on May 12th."
+      "tooltip": "No contributions on May 12th."
     },
     {
       "date": "2026-05-13",
@@ -1501,35 +1501,35 @@
     },
     {
       "date": "2026-05-22",
-      "count": 1,
-      "level": 1,
+      "count": 0,
+      "level": 0,
       "row": 5,
       "col": 25,
-      "tooltip": "1 contribution on May 22nd."
+      "tooltip": "No contributions on May 22nd."
     },
     {
       "date": "2026-05-23",
-      "count": 1,
-      "level": 1,
+      "count": 0,
+      "level": 0,
       "row": 6,
       "col": 25,
-      "tooltip": "1 contribution on May 23rd."
+      "tooltip": "No contributions on May 23rd."
     },
     {
       "date": "2026-05-24",
-      "count": 1,
-      "level": 1,
+      "count": 0,
+      "level": 0,
       "row": 0,
       "col": 26,
-      "tooltip": "1 contribution on May 24th."
+      "tooltip": "No contributions on May 24th."
     },
     {
       "date": "2026-05-25",
-      "count": 1,
-      "level": 1,
+      "count": 0,
+      "level": 0,
       "row": 1,
       "col": 26,
-      "tooltip": "1 contribution on May 25th."
+      "tooltip": "No contributions on May 25th."
     },
     {
       "date": "2026-05-26",
@@ -1557,43 +1557,43 @@
     },
     {
       "date": "2026-05-29",
-      "count": 4,
-      "level": 2,
+      "count": 0,
+      "level": 0,
       "row": 5,
       "col": 26,
-      "tooltip": "4 contributions on May 29th."
+      "tooltip": "No contributions on May 29th."
     },
     {
       "date": "2026-05-30",
-      "count": 4,
-      "level": 2,
+      "count": 0,
+      "level": 0,
       "row": 6,
       "col": 26,
-      "tooltip": "4 contributions on May 30th."
+      "tooltip": "No contributions on May 30th."
     },
     {
       "date": "2026-05-31",
-      "count": 7,
-      "level": 3,
+      "count": 0,
+      "level": 0,
       "row": 0,
       "col": 27,
-      "tooltip": "7 contributions on May 31st."
+      "tooltip": "No contributions on May 31st."
     },
     {
       "date": "2026-06-01",
-      "count": 5,
-      "level": 2,
+      "count": 0,
+      "level": 0,
       "row": 1,
       "col": 27,
-      "tooltip": "5 contributions on June 1st."
+      "tooltip": "No contributions on June 1st."
     },
     {
       "date": "2026-06-02",
-      "count": 2,
-      "level": 1,
+      "count": 0,
+      "level": 0,
       "row": 2,
       "col": 27,
-      "tooltip": "2 contributions on June 2nd."
+      "tooltip": "No contributions on June 2nd."
     },
     {
       "date": "2026-06-03",
@@ -1605,11 +1605,11 @@
     },
     {
       "date": "2026-06-04",
-      "count": 2,
-      "level": 1,
+      "count": 0,
+      "level": 0,
       "row": 4,
       "col": 27,
-      "tooltip": "2 contributions on June 4th."
+      "tooltip": "No contributions on June 4th."
     },
     {
       "date": "2026-06-05",
@@ -1629,51 +1629,51 @@
     },
     {
       "date": "2026-06-07",
-      "count": 1,
-      "level": 1,
+      "count": 0,
+      "level": 0,
       "row": 0,
       "col": 28,
-      "tooltip": "1 contribution on June 7th."
+      "tooltip": "No contributions on June 7th."
     },
     {
       "date": "2026-06-08",
-      "count": 1,
-      "level": 1,
+      "count": 0,
+      "level": 0,
       "row": 1,
       "col": 28,
-      "tooltip": "1 contribution on June 8th."
+      "tooltip": "No contributions on June 8th."
     },
     {
       "date": "2026-06-09",
-      "count": 1,
-      "level": 1,
+      "count": 0,
+      "level": 0,
       "row": 2,
       "col": 28,
-      "tooltip": "1 contribution on June 9th."
+      "tooltip": "No contributions on June 9th."
     },
     {
       "date": "2026-06-10",
-      "count": 1,
-      "level": 1,
+      "count": 0,
+      "level": 0,
       "row": 3,
       "col": 28,
-      "tooltip": "1 contribution on June 10th."
+      "tooltip": "No contributions on June 10th."
     },
     {
       "date": "2026-06-11",
-      "count": 2,
-      "level": 1,
+      "count": 0,
+      "level": 0,
       "row": 4,
       "col": 28,
-      "tooltip": "2 contributions on June 11th."
+      "tooltip": "No contributions on June 11th."
     },
     {
       "date": "2026-06-12",
-      "count": 3,
-      "level": 2,
+      "count": 0,
+      "level": 0,
       "row": 5,
       "col": 28,
-      "tooltip": "3 contributions on June 12th."
+      "tooltip": "No contributions on June 12th."
     },
     {
       "date": "2026-06-13",
@@ -1693,35 +1693,35 @@
     },
     {
       "date": "2026-06-15",
-      "count": 1,
-      "level": 1,
+      "count": 0,
+      "level": 0,
       "row": 1,
       "col": 29,
-      "tooltip": "1 contribution on June 15th."
+      "tooltip": "No contributions on June 15th."
     },
     {
       "date": "2026-06-16",
-      "count": 1,
-      "level": 1,
+      "count": 0,
+      "level": 0,
       "row": 2,
       "col": 29,
-      "tooltip": "1 contribution on June 16th."
+      "tooltip": "No contributions on June 16th."
     },
     {
       "date": "2026-06-17",
-      "count": 6,
-      "level": 3,
+      "count": 0,
+      "level": 0,
       "row": 3,
       "col": 29,
-      "tooltip": "6 contributions on June 17th."
+      "tooltip": "No contributions on June 17th."
     },
     {
       "date": "2026-06-18",
-      "count": 1,
-      "level": 1,
+      "count": 0,
+      "level": 0,
       "row": 4,
       "col": 29,
-      "tooltip": "1 contribution on June 18th."
+      "tooltip": "No contributions on June 18th."
     },
     {
       "date": "2026-06-19",
@@ -1733,11 +1733,11 @@
     },
     {
       "date": "2026-06-20",
-      "count": 1,
-      "level": 1,
+      "count": 0,
+      "level": 0,
       "row": 6,
       "col": 29,
-      "tooltip": "1 contribution on June 20th."
+      "tooltip": "No contributions on June 20th."
     },
     {
       "date": "2026-06-21",
@@ -1749,11 +1749,11 @@
     },
     {
       "date": "2026-06-22",
-      "count": 1,
-      "level": 1,
+      "count": 0,
+      "level": 0,
       "row": 1,
       "col": 30,
-      "tooltip": "1 contribution on June 22nd."
+      "tooltip": "No contributions on June 22nd."
     },
     {
       "date": "2026-06-23",
@@ -1765,19 +1765,19 @@
     },
     {
       "date": "2026-06-24",
-      "count": 2,
-      "level": 1,
+      "count": 0,
+      "level": 0,
       "row": 3,
       "col": 30,
-      "tooltip": "2 contributions on June 24th."
+      "tooltip": "No contributions on June 24th."
     },
     {
       "date": "2026-06-25",
-      "count": 1,
-      "level": 1,
+      "count": 0,
+      "level": 0,
       "row": 4,
       "col": 30,
-      "tooltip": "1 contribution on June 25th."
+      "tooltip": "No contributions on June 25th."
     },
     {
       "date": "2026-06-26",
@@ -1789,11 +1789,11 @@
     },
     {
       "date": "2026-06-27",
-      "count": 1,
-      "level": 1,
+      "count": 0,
+      "level": 0,
       "row": 6,
       "col": 30,
-      "tooltip": "1 contribution on June 27th."
+      "tooltip": "No contributions on June 27th."
     },
     {
       "date": "2026-06-28",
@@ -1821,19 +1821,19 @@
     },
     {
       "date": "2026-07-01",
-      "count": 2,
-      "level": 1,
+      "count": 0,
+      "level": 0,
       "row": 3,
       "col": 31,
-      "tooltip": "2 contributions on July 1st."
+      "tooltip": "No contributions on July 1st."
     },
     {
       "date": "2026-07-02",
-      "count": 2,
-      "level": 1,
+      "count": 0,
+      "level": 0,
       "row": 4,
       "col": 31,
-      "tooltip": "2 contributions on July 2nd."
+      "tooltip": "No contributions on July 2nd."
     },
     {
       "date": "2026-07-03",
@@ -1853,59 +1853,59 @@
     },
     {
       "date": "2026-07-05",
-      "count": 2,
-      "level": 1,
+      "count": 0,
+      "level": 0,
       "row": 0,
       "col": 32,
-      "tooltip": "2 contributions on July 5th."
+      "tooltip": "No contributions on July 5th."
     },
     {
       "date": "2026-07-06",
-      "count": 3,
-      "level": 2,
+      "count": 0,
+      "level": 0,
       "row": 1,
       "col": 32,
-      "tooltip": "3 contributions on July 6th."
+      "tooltip": "No contributions on July 6th."
     },
     {
       "date": "2026-07-07",
-      "count": 2,
-      "level": 1,
+      "count": 0,
+      "level": 0,
       "row": 2,
       "col": 32,
-      "tooltip": "2 contributions on July 7th."
+      "tooltip": "No contributions on July 7th."
     },
     {
       "date": "2026-07-08",
-      "count": 2,
-      "level": 1,
+      "count": 0,
+      "level": 0,
       "row": 3,
       "col": 32,
-      "tooltip": "2 contributions on July 8th."
+      "tooltip": "No contributions on July 8th."
     },
     {
       "date": "2026-07-09",
-      "count": 1,
-      "level": 1,
+      "count": 0,
+      "level": 0,
       "row": 4,
       "col": 32,
-      "tooltip": "1 contribution on July 9th."
+      "tooltip": "No contributions on July 9th."
     },
     {
       "date": "2026-07-10",
-      "count": 1,
-      "level": 1,
+      "count": 0,
+      "level": 0,
       "row": 5,
       "col": 32,
-      "tooltip": "1 contribution on July 10th."
+      "tooltip": "No contributions on July 10th."
     },
     {
       "date": "2026-07-11",
-      "count": 3,
-      "level": 2,
+      "count": 0,
+      "level": 0,
       "row": 6,
       "col": 32,
-      "tooltip": "3 contributions on July 11th."
+      "tooltip": "No contributions on July 11th."
     },
     {
       "date": "2026-07-12",
@@ -1917,51 +1917,51 @@
     },
     {
       "date": "2026-07-13",
-      "count": 2,
-      "level": 1,
+      "count": 0,
+      "level": 0,
       "row": 1,
       "col": 33,
-      "tooltip": "2 contributions on July 13th."
+      "tooltip": "No contributions on July 13th."
     },
     {
       "date": "2026-07-14",
-      "count": 2,
-      "level": 1,
+      "count": 0,
+      "level": 0,
       "row": 2,
       "col": 33,
-      "tooltip": "2 contributions on July 14th."
+      "tooltip": "No contributions on July 14th."
     },
     {
       "date": "2026-07-15",
-      "count": 4,
-      "level": 2,
+      "count": 0,
+      "level": 0,
       "row": 3,
       "col": 33,
-      "tooltip": "4 contributions on July 15th."
+      "tooltip": "No contributions on July 15th."
     },
     {
       "date": "2026-07-16",
-      "count": 7,
-      "level": 3,
+      "count": 0,
+      "level": 0,
       "row": 4,
       "col": 33,
-      "tooltip": "7 contributions on July 16th."
+      "tooltip": "No contributions on July 16th."
     },
     {
       "date": "2026-07-17",
-      "count": 5,
-      "level": 2,
+      "count": 0,
+      "level": 0,
       "row": 5,
       "col": 33,
-      "tooltip": "5 contributions on July 17th."
+      "tooltip": "No contributions on July 17th."
     },
     {
       "date": "2026-07-18",
-      "count": 2,
-      "level": 1,
+      "count": 0,
+      "level": 0,
       "row": 6,
       "col": 33,
-      "tooltip": "2 contributions on July 18th."
+      "tooltip": "No contributions on July 18th."
     },
     {
       "date": "2026-07-19",
@@ -1973,11 +1973,11 @@
     },
     {
       "date": "2026-07-20",
-      "count": 10,
-      "level": 4,
+      "count": 0,
+      "level": 0,
       "row": 1,
       "col": 34,
-      "tooltip": "10 contributions on July 20th."
+      "tooltip": "No contributions on July 20th."
     },
     {
       "date": "2026-07-21",
@@ -1989,11 +1989,11 @@
     },
     {
       "date": "2026-07-22",
-      "count": 1,
-      "level": 1,
+      "count": 0,
+      "level": 0,
       "row": 3,
       "col": 34,
-      "tooltip": "1 contribution on July 22nd."
+      "tooltip": "No contributions on July 22nd."
     },
     {
       "date": "2026-07-23",
@@ -2013,51 +2013,51 @@
     },
     {
       "date": "2026-07-25",
-      "count": 1,
-      "level": 1,
+      "count": 0,
+      "level": 0,
       "row": 6,
       "col": 34,
-      "tooltip": "1 contribution on July 25th."
+      "tooltip": "No contributions on July 25th."
     },
     {
       "date": "2026-07-26",
-      "count": 2,
-      "level": 1,
+      "count": 0,
+      "level": 0,
       "row": 0,
       "col": 35,
-      "tooltip": "2 contributions on July 26th."
+      "tooltip": "No contributions on July 26th."
     },
     {
       "date": "2026-07-27",
-      "count": 5,
-      "level": 2,
+      "count": 0,
+      "level": 0,
       "row": 1,
       "col": 35,
-      "tooltip": "5 contributions on July 27th."
+      "tooltip": "No contributions on July 27th."
     },
     {
       "date": "2026-07-28",
-      "count": 1,
-      "level": 1,
+      "count": 0,
+      "level": 0,
       "row": 2,
       "col": 35,
-      "tooltip": "1 contribution on July 28th."
+      "tooltip": "No contributions on July 28th."
     },
     {
       "date": "2026-07-29",
-      "count": 4,
-      "level": 2,
+      "count": 0,
+      "level": 0,
       "row": 3,
       "col": 35,
-      "tooltip": "4 contributions on July 29th."
+      "tooltip": "No contributions on July 29th."
     },
     {
       "date": "2026-07-30",
-      "count": 3,
-      "level": 2,
+      "count": 0,
+      "level": 0,
       "row": 4,
       "col": 35,
-      "tooltip": "3 contributions on July 30th."
+      "tooltip": "No contributions on July 30th."
     },
     {
       "date": "2026-07-31",
@@ -2093,35 +2093,35 @@
     },
     {
       "date": "2026-08-04",
-      "count": 19,
-      "level": 4,
+      "count": 0,
+      "level": 0,
       "row": 2,
       "col": 36,
-      "tooltip": "19 contributions on August 4th."
+      "tooltip": "No contributions on August 4th."
     },
     {
       "date": "2026-08-05",
-      "count": 1,
-      "level": 1,
+      "count": 0,
+      "level": 0,
       "row": 3,
       "col": 36,
-      "tooltip": "1 contribution on August 5th."
+      "tooltip": "No contributions on August 5th."
     },
     {
       "date": "2026-08-06",
-      "count": 1,
-      "level": 1,
+      "count": 0,
+      "level": 0,
       "row": 4,
       "col": 36,
-      "tooltip": "1 contribution on August 6th."
+      "tooltip": "No contributions on August 6th."
     },
     {
       "date": "2026-08-07",
-      "count": 3,
-      "level": 2,
+      "count": 0,
+      "level": 0,
       "row": 5,
       "col": 36,
-      "tooltip": "3 contributions on August 7th."
+      "tooltip": "No contributions on August 7th."
     },
     {
       "date": "2026-08-08",
@@ -2253,11 +2253,11 @@
     },
     {
       "date": "2026-08-24",
-      "count": 2,
-      "level": 1,
+      "count": 0,
+      "level": 0,
       "row": 1,
       "col": 39,
-      "tooltip": "2 contributions on August 24th."
+      "tooltip": "No contributions on August 24th."
     },
     {
       "date": "2026-08-25",
@@ -2485,11 +2485,11 @@
     },
     {
       "date": "2026-09-22",
-      "count": 2,
-      "level": 1,
+      "count": 0,
+      "level": 0,
       "row": 2,
       "col": 43,
-      "tooltip": "2 contributions on September 22nd."
+      "tooltip": "No contributions on September 22nd."
     },
     {
       "date": "2026-09-23",
@@ -2501,11 +2501,11 @@
     },
     {
       "date": "2026-09-24",
-      "count": 1,
-      "level": 1,
+      "count": 0,
+      "level": 0,
       "row": 4,
       "col": 43,
-      "tooltip": "1 contribution on September 24th."
+      "tooltip": "No contributions on September 24th."
     },
     {
       "date": "2026-09-25",
@@ -2533,11 +2533,11 @@
     },
     {
       "date": "2026-09-28",
-      "count": 7,
-      "level": 3,
+      "count": 0,
+      "level": 0,
       "row": 1,
       "col": 44,
-      "tooltip": "7 contributions on September 28th."
+      "tooltip": "No contributions on September 28th."
     },
     {
       "date": "2026-09-29",
@@ -2549,11 +2549,11 @@
     },
     {
       "date": "2026-09-30",
-      "count": 2,
-      "level": 1,
+      "count": 0,
+      "level": 0,
       "row": 3,
       "col": 44,
-      "tooltip": "2 contributions on September 30th."
+      "tooltip": "No contributions on September 30th."
     },
     {
       "date": "2026-10-01",
@@ -2757,19 +2757,19 @@
     },
     {
       "date": "2026-10-26",
-      "count": 8,
-      "level": 3,
+      "count": 0,
+      "level": 0,
       "row": 1,
       "col": 48,
-      "tooltip": "8 contributions on October 26th."
+      "tooltip": "No contributions on October 26th."
     },
     {
       "date": "2026-10-27",
-      "count": 10,
-      "level": 4,
+      "count": 0,
+      "level": 0,
       "row": 2,
       "col": 48,
-      "tooltip": "10 contributions on October 27th."
+      "tooltip": "No contributions on October 27th."
     },
     {
       "date": "2026-10-28",
@@ -2805,51 +2805,51 @@
     },
     {
       "date": "2026-11-01",
-      "count": 1,
-      "level": 1,
+      "count": 0,
+      "level": 0,
       "row": 0,
       "col": 49,
-      "tooltip": "1 contribution on November 1st."
+      "tooltip": "No contributions on November 1st."
     },
     {
       "date": "2026-11-02",
-      "count": 18,
-      "level": 4,
+      "count": 0,
+      "level": 0,
       "row": 1,
       "col": 49,
-      "tooltip": "18 contributions on November 2nd."
+      "tooltip": "No contributions on November 2nd."
     },
     {
       "date": "2026-11-03",
-      "count": 4,
-      "level": 2,
+      "count": 0,
+      "level": 0,
       "row": 2,
       "col": 49,
-      "tooltip": "4 contributions on November 3rd."
+      "tooltip": "No contributions on November 3rd."
     },
     {
       "date": "2026-11-04",
-      "count": 3,
-      "level": 2,
+      "count": 0,
+      "level": 0,
       "row": 3,
       "col": 49,
-      "tooltip": "3 contributions on November 4th."
+      "tooltip": "No contributions on November 4th."
     },
     {
       "date": "2026-11-05",
-      "count": 3,
-      "level": 2,
+      "count": 0,
+      "level": 0,
       "row": 4,
       "col": 49,
-      "tooltip": "3 contributions on November 5th."
+      "tooltip": "No contributions on November 5th."
     },
     {
       "date": "2026-11-06",
-      "count": 2,
-      "level": 1,
+      "count": 0,
+      "level": 0,
       "row": 5,
       "col": 49,
-      "tooltip": "2 contributions on November 6th."
+      "tooltip": "No contributions on November 6th."
     },
     {
       "date": "2026-11-07",
@@ -2861,131 +2861,131 @@
     },
     {
       "date": "2026-11-08",
-      "count": 2,
-      "level": 1,
+      "count": 0,
+      "level": 0,
       "row": 0,
       "col": 50,
-      "tooltip": "2 contributions on November 8th."
+      "tooltip": "No contributions on November 8th."
     },
     {
       "date": "2026-11-09",
-      "count": 2,
-      "level": 1,
+      "count": 0,
+      "level": 0,
       "row": 1,
       "col": 50,
-      "tooltip": "2 contributions on November 9th."
+      "tooltip": "No contributions on November 9th."
     },
     {
       "date": "2026-11-10",
-      "count": 12,
-      "level": 4,
+      "count": 0,
+      "level": 0,
       "row": 2,
       "col": 50,
-      "tooltip": "12 contributions on November 10th."
+      "tooltip": "No contributions on November 10th."
     },
     {
       "date": "2026-11-11",
-      "count": 7,
-      "level": 3,
+      "count": 0,
+      "level": 0,
       "row": 3,
       "col": 50,
-      "tooltip": "7 contributions on November 11th."
+      "tooltip": "No contributions on November 11th."
     },
     {
       "date": "2026-11-12",
-      "count": 8,
-      "level": 3,
+      "count": 0,
+      "level": 0,
       "row": 4,
       "col": 50,
-      "tooltip": "8 contributions on November 12th."
+      "tooltip": "No contributions on November 12th."
     },
     {
       "date": "2026-11-13",
-      "count": 12,
-      "level": 4,
+      "count": 0,
+      "level": 0,
       "row": 5,
       "col": 50,
-      "tooltip": "12 contributions on November 13th."
+      "tooltip": "No contributions on November 13th."
     },
     {
       "date": "2026-11-14",
-      "count": 9,
-      "level": 4,
+      "count": 0,
+      "level": 0,
       "row": 6,
       "col": 50,
-      "tooltip": "9 contributions on November 14th."
+      "tooltip": "No contributions on November 14th."
     },
     {
       "date": "2026-11-15",
-      "count": 9,
-      "level": 4,
+      "count": 0,
+      "level": 0,
       "row": 0,
       "col": 51,
-      "tooltip": "9 contributions on November 15th."
+      "tooltip": "No contributions on November 15th."
     },
     {
       "date": "2026-11-16",
-      "count": 9,
-      "level": 4,
+      "count": 0,
+      "level": 0,
       "row": 1,
       "col": 51,
-      "tooltip": "9 contributions on November 16th."
+      "tooltip": "No contributions on November 16th."
     },
     {
       "date": "2026-11-17",
-      "count": 9,
-      "level": 4,
+      "count": 0,
+      "level": 0,
       "row": 2,
       "col": 51,
-      "tooltip": "9 contributions on November 17th."
+      "tooltip": "No contributions on November 17th."
     },
     {
       "date": "2026-11-18",
-      "count": 9,
-      "level": 4,
+      "count": 0,
+      "level": 0,
       "row": 3,
       "col": 51,
-      "tooltip": "9 contributions on November 18th."
+      "tooltip": "No contributions on November 18th."
     },
     {
       "date": "2026-11-19",
-      "count": 11,
-      "level": 4,
+      "count": 0,
+      "level": 0,
       "row": 4,
       "col": 51,
-      "tooltip": "11 contributions on November 19th."
+      "tooltip": "No contributions on November 19th."
     },
     {
       "date": "2026-11-20",
-      "count": 12,
-      "level": 4,
+      "count": 0,
+      "level": 0,
       "row": 5,
       "col": 51,
-      "tooltip": "12 contributions on November 20th."
+      "tooltip": "No contributions on November 20th."
     },
     {
       "date": "2026-11-21",
-      "count": 6,
-      "level": 3,
+      "count": 0,
+      "level": 0,
       "row": 6,
       "col": 51,
-      "tooltip": "6 contributions on November 21st."
+      "tooltip": "No contributions on November 21st."
     },
     {
       "date": "2026-11-22",
-      "count": 8,
-      "level": 3,
+      "count": 0,
+      "level": 0,
       "row": 0,
       "col": 52,
-      "tooltip": "8 contributions on November 22nd."
+      "tooltip": "No contributions on November 22nd."
     },
     {
       "date": "2026-11-23",
-      "count": 2,
-      "level": 1,
+      "count": 0,
+      "level": 0,
       "row": 1,
       "col": 52,
-      "tooltip": "2 contributions on November 23rd."
+      "tooltip": "No contributions on November 23rd."
     },
     {
       "date": "2026-11-24",
